@@ -32,5 +32,27 @@ describe Comment, comment: true do
       comment.blog.id.should == blog.id
     end
   end
+
+  describe '#visible' do
+    before { @blog = Blog.create! title: 'New post', body: 'Body' }
+    it 'should be false when created' do
+      comment = @blog.comments.create!(name: 'Name', body: 'Body')
+      comment.should_not be_visible
+    end
+
+    it 'should not be overridden' do
+      comment = @blog.comments.create!(name: 'Name', body: 'Body')
+      expect {
+        comment.update_attributes(visible: true)
+      }.to raise_error(ActiveModel::MassAssignmentSecurity::Error)
+      comment.should_not be_visible
+    end
+
+    it 'should be overridden by admin' do
+      comment = @blog.comments.create!(name: 'Name', body: 'Body')
+      comment.update_attributes({ visible: true }, as: :admin)
+      comment.should be_visible
+    end
+  end
 end
 

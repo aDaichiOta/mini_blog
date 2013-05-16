@@ -6,4 +6,8 @@ class Comment < ActiveRecord::Base
 
   # ----- ----- ----- ----- assocs ----- ----- ----- -----
   belongs_to :blog
+
+  scope :visible, ->{ where(visible: true) }
+
+  def visible?; visible end
 end
