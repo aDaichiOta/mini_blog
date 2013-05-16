@@ -192,5 +192,13 @@ RailsAdmin.config do |config|
   #     # you can override a cross-section field configuration in any section with the same syntax `configure :field_name do ... end`
   #     # using `field` instead of `configure` will exclude all other fields and force the ordering
   # end
-
+  config.attr_accessible_role { :admin }
+  config.model 'Comment' do
+    list do
+      fields :id, :blog, :name, :body, :visible
+      fields :created_at, :updated_at do
+        date_format :short
+      end
+    end
+  end
 end

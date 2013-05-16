@@ -18,3 +18,4 @@ coverage/
 # Project file
 *.sublime-workspace
 
+.DS_Store

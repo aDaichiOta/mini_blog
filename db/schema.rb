@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130516052958) do
+ActiveRecord::Schema.define(:version => 20130516053927) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title",      :null => false
@@ -23,9 +23,10 @@ ActiveRecord::Schema.define(:version => 20130516052958) do
   create_table "comments", :force => true do |t|
     t.integer  "blog_id"
     t.string   "name"
-    t.text     "body",       :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text     "body",                          :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "visible",    :default => false, :null => false
   end
 
   create_table "rails_admin_histories", :force => true do |t|

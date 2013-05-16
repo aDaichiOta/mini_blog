@@ -12,3 +12,5 @@ ja:
       comment:
         name: 投稿者
         body: 本文
+        blog: 記事
+        visible: 公開
